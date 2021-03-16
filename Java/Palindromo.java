@@ -24,9 +24,16 @@ public class Palindromo
   public static void main (String [] args)
   {
     Scanner in = new Scanner (System.in);
-    String s = in.nextLine();
-    String x = rev (s.toLowerCase());
-    check (x, s);
+    String s;
+    String end = "FIM";
+
+    do
+    {
+      s = in.nextLine();
+      String x = rev (s.toLowerCase());
+      check (x, s);
+    } while (s.equals(end) == false);
+    
     in.close();
   }
 }
