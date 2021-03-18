@@ -1,74 +1,67 @@
 #include <stdio.h>
 #include <string.h>
 
-/*------------¬
- | Pedro Igor | 
- | 12/03/2021 |
- | AEDII - PC |
- \-----------*/
-
-void check (char *s)
+void freq (char *s)
 {
-	int i;
-	int j;
+	int i = 0;
+	int j = 0;
 	int maior;
 	int freq [26];
 	
-	char alfa [27] = "abcdefghijklmnopqrstuvwxyz";
-		
 	for (i = 0; i < 26; i++)
 	{
-		freq[i] = 0;
+		freq [i] = 0;
 	}
+	
+	char base [27] = "abcdefghijklmnopqrstuvwyz";
 	
 	for (i = 0; i < strlen(s); i++)
 	{
 		for (j = 0; j < 26; j++)
 		{
-			if (s[i] == alfa[j] || s[i] + 32 == alfa[j])
+			if (s[i] == base[j] || s[i] + 32 == base[j])
 			{
 				freq[j]++;
-			}	
+				break;
+			}
 		}
 	}
 	
 	maior = freq[0];
-	
-	for (i = 1; i < 26; i++)
-	{
-		if(freq[i] > maior)
-		{
+    for (i = 1; i < 26; i++)
+    {
+		if (freq[i] > maior)
+        {
 			maior = freq[i];
 		}
 	}
 	
-	for (i = 0; i < 26; i++)
-	{
-		if (freq[i] == maior)
-		{
-			printf("%c", alfa[i]);
+	   
+    for (i = 0; i < 26; i++)
+    {
+        if (freq[i] == maior)
+        {
+            printf("%c", base[i]);
 		}
 	}
-	printf("\n");
-	
+		printf("\n");	
 }
 
 void read ()
 {
-	char s [50];	
+	char s [200];
 	scanf ("%s", s);
-	check (s);
+	freq (s);	
 }
 
 int main ()
 {
-	int i;
 	int N;
-	scanf ("%d", &N);
-	
-	for (i = 0;i < N; i++)
+	scanf("%d", &N);
+	while (N--)
 	{
 		read();
 	}
+	
 	return 0;
 }
